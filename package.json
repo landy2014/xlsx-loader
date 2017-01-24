@@ -1,0 +1,21 @@
+{
+  "name": "xlsx-loader",
+  "version": "1.0.1",
+  "description": "transform xlsx to object for webpack loader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/landy2014/xlsx-loader.git"
+  },
+  "keywords": [
+    "xlsx"
+  ],
+  "author": "linyandi",
+  "license": "MIT",
+  "dependencies": {
+    "node-xlsx": "^0.7.4"
+  }
+}
