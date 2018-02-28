@@ -1,8 +1,9 @@
 #!usr/bin/env node
+
 let xlsx = require('node-xlsx');
 let fs = require('fs');
 
-module.exports = function() {
+module.exports = function () {
   this.cacheable && this.cacheable();
 
   // parse execl to json
@@ -14,9 +15,11 @@ module.exports = function() {
   // fetch list
   var tempDataList = fileContent[0].data;
 
-  var tempString = "[";
+  var tempArr = [],
+    tempString = '';
   for (var i = 1, len = tempDataList.length; i < len; i++) {
     tempString += "{";
+    if (tempDataList[i].length == 0) continue;
     for (var j = 0; j < tempDataList[i].length; j++) {
       var tempStr = tempDataList[i][j];
       var replaceStr = "";
@@ -33,15 +36,10 @@ module.exports = function() {
       }
 
     }
-    if (i == tempDataList.length - 1) {
-      tempString += "}";
-    } else {
-      tempString += "},";
-    }
-
+    tempString += "}";
+    tempArr.push(tempString)
   }
-  tempString += "]";
 
-  return 'module.exports = {"list": ' + tempString + '};';
+
+  return 'module.exports = {"list": ' + JSON.stringify(tempArr) + '};';
 };
-
